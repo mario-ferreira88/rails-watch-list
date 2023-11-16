@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= render @list %></h1>
+
+<% if @list.movies.any? %>
+  <h2>Selected Movies:</h2>
+  <ul>
+    <% @list.movies.each do |movie| %>
+      <li><%= movie.title %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No movies selected.</p>
+<% end %>
+
+<%= link_to "Back to lists", lists_path %>
