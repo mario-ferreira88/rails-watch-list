@@ -1,15 +1,18 @@
+require 'httparty'
+response = HTTParty.get('https://tmdb.lewagon.com/movie/top_rated')
+movies = JSON.parse(response.body)['results']
+
 puts 'Cleaning database...'
 Movie.destroy_all
 
 puts 'Creating movies...'
 
-10.times do
+movies.each do |movie|
   Movie.create(
-    title: Faker::Movie.title,
-    overview: Faker::Movie.quote,
-    poster_url: Faker::Internet.url,
-    rating: Faker::Number.within(range: 0.0..10.0)
+    title: movie['title'],
+    poster_url: movie['poster_path'],
+    overview: movie['overview'],
+    rating: movie['vote_average']
   )
-
-  puts 'Finished!'
 end
+puts 'Finished!'

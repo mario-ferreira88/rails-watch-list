@@ -2,12 +2,12 @@
 
 <h1>Lists</h1>
 
-<div id="lists">
+<div id="lists" class="cards">
   <% @lists.each do |list| %>
-    <%= render list %>
+   <div class="card-category"> <%= render list %>
     <p>
       <%= link_to "Show this list", list %>
-    </p>
+    </p></div>
   <% end %>
 </div>
 
