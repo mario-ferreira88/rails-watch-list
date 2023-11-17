@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1><%= render @list %></h1>
+<%= image_tag @list.image if @list.image.attached? %>
 
 <% if @list.movies.any? %>
   <h2>Selected Movies:</h2>
